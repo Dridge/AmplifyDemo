@@ -51,3 +51,19 @@ import 'zone.js';  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+/**
+* Angular 6+ does not include shims for 'global' or 'process' as provided in previous versions. Add the following to your src/polyfills.ts file to recreate them
+*
+*/
+(window as any).global = window;
+(window as any).process = {
+  env: { DEBUG: undefined },
+};
+
+/**
+*In order for Angular apps to work on IE11, you need to add the following to your src/polyfills.ts file as well
+*
+*/
+import 'core-js/es/typed-array';
+import 'core-js/es/object';
+

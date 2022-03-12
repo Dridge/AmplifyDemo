@@ -350,6 +350,40 @@
 
   </div>
 
+  <div class="form-body">
+    <form
+      autocomplete="off"
+      [formGroup]="createForm"
+      (ngSubmit)="onCreate(createForm.value)"
+    >
+      <div>
+        <label>Name: </label>
+        <input type="text" formControlName="name" autocomplete="off" />
+      </div>
+      <div>
+        <label>Description: </label>
+        <input type="text" formControlName="description" autocomplete="off" />
+      </div>
+      <div>
+        <label>City: </label>
+        <input type="text" formControlName="city" autocomplete="off" />
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <h2>Restaurants Added</h2>
+  <div class="form-body">
+    <div *ngFor="let restaurant of restaurants">
+      <form>
+        <div>City: {{ restaurant.city }}</div>
+        <div>Name: {{ restaurant.name }}</div>
+        <div>Description: {{ restaurant.description }}</div>
+        <br>
+      </form>
+  </div>
+  </div>
+
   <!-- Resources -->
   <h2>Resources</h2>
   <p>Here are some links to help you get started:</p>
