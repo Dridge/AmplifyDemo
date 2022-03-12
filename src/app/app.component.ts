@@ -2,12 +2,16 @@ import {Component, OnInit, OnDestroy} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { Subscription } from "rxjs/internal/Subscription";
 import {APIService, Restaurant} from "./API.service";
+import { AuthenticatorService } from '@aws-amplify/ui-angular';
+import { Amplify } from 'aws-amplify';
+import awsExports from "src/aws-exports";
 
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"],
 })
+
 export class AppComponent {
   title = "amplify-angular-app";
   public createForm: FormGroup;
@@ -17,7 +21,8 @@ export class AppComponent {
   
   private subscription: Subscription | null = null;
 
-  constructor(private api: APIService, private fb: FormBuilder) {
+  constructor(private api: APIService, private fb: FormBuilder, public authenticator: AuthenticatorService) {
+    Amplify.configure(awsExports);
     this.createForm = this.fb.group({
       name: ["", Validators.required],
       description: ["", Validators.required],
