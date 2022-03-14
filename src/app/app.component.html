@@ -1,20 +1,8 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
-  <img
-    width="40"
-    alt="Angular Logo"
-    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
-  />
-  <span>Welcome</span>
+  <span class="large-squished-text">MR</span>
+  <span>Welcome to My Restaurants!</span>
     <div class="spacer"></div>
     <a aria-label="Angular on twitter" target="_blank" rel="noopener" href="https://twitter.com/angular" title="Twitter">
       <svg id="twitter-logo" height="24" data-name="Logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
@@ -31,63 +19,63 @@
 </div>
 
 <div class="content" role="main">
-
-  <!-- Highlight Card -->
+  <!-- Quick explanation-->
   <div class="card highlight-card card-small">
-    <p>{{ title }} app is running!</p>
+    <p>Create a list of your favourite restaurants, add, remove, rate and share!</p>
   </div>
-
-  <!-- TODO get this actually working! -->
-  <amplify-authenticator>
-    <ng-template
-      amplifySlot="authenticated"
-      let-user="user"
-      let-signOut="signOut"
-      let-signIn="signIn"
-      let-signUp="signUp"
-    >
-    <button class="loginBtn" (click)="signIn()">Sign In</button>
-    <h1>Welcome {{ user.username }}!</h1>
-    <button class="loginBtn" (click)="signOut()">Sign Out</button>
-    
-    <button class="loginBtn" (click)="signUp">Sign Up</button>
-  </ng-template>
-  </amplify-authenticator>
-
-  <h2>Add a restaurant</h2>
-  <div class="form-body">
-    <form
-      autocomplete="off"
-      [formGroup]="createForm"
-      (ngSubmit)="onCreate(createForm.value)"
-    >
-      <div>
-        <label>Name: </label>
-        <input type="text" formControlName="name" autocomplete="off" />
-      </div>
-      <div>
-        <label>Description: </label>
-        <input type="text" formControlName="description" autocomplete="off" />
-      </div>
-      <div>
-        <label>City: </label>
-        <input type="text" formControlName="city" autocomplete="off" />
-      </div>
-      <button type="submit">Submit</button>
-    </form>
-  </div>
-
-  <h2>Restaurants Added</h2>
-  <div class="form-body">
-    <div *ngFor="let restaurant of restaurants">
-      <form>
-        <div>City: {{ restaurant.city }}</div>
-        <div>Name: {{ restaurant.name }}</div>
-        <div>Description: {{ restaurant.description }}</div>
-        <br>
+  <div class="border box left-box">
+    <h2>Add a restaurant</h2>
+    <div class="form-body">
+      <form
+        autocomplete="off"
+        [formGroup]="createForm"
+        (ngSubmit)="onCreate(createForm.value)"
+      >
+        <div>
+          <label>Name: </label>
+          <input type="text" formControlName="name" autocomplete="off" />
+        </div>
+        <div>
+          <label>Description: </label>
+          <input type="text" formControlName="description" autocomplete="off" />
+        </div>
+        <div>
+          <label>City: </label>
+          <input type="text" formControlName="city" autocomplete="off" />
+        </div>
+        <button class="card-btn" type="submit">Submit</button>
       </form>
     </div>
   </div>
+  <div class="border box center-box">
+    <h2>Restaurants Added</h2>
+    <div class="form-body">
+      <div *ngFor="let restaurant of restaurants">
+        <form>
+          <div>City: {{ restaurant.city }}</div>
+          <div>Name: {{ restaurant.name }}</div>
+          <div>Description: {{ restaurant.description }}</div>
+          <br>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="border box right-box">
+    <amplify-authenticator>
+      <ng-template
+          amplifySlot="authenticated"
+          let-user="user"
+          let-signOut="signOut"
+        >
+        <h1>Welcome {{ user.username }}!</h1>
+        <div class="card-container">
+          <a class="card card-tiny" target="_blank" rel="noopener" href="https://angular.io/tutorial">
+            <span (click)="signOut()">Sign Out</span>
+            </a>
+        </div>
+      </ng-template>
+      </amplify-authenticator>
+    </div>
 
   <!-- Resources -->
   <h2>Resources</h2>
@@ -200,16 +188,6 @@
         </p>
       </div>
     </ng-template>
-      Love Angular?&nbsp;
-      <a href="https://github.com/angular/angular" target="_blank" rel="noopener"> Give our repo a star.
-        <div class="github-star-badge">
-            <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          Star
-        </div>
-      </a>
-      <a href="https://github.com/angular/angular" target="_blank" rel="noopener">
-        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="#1976d2"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-      </a>
   </footer>
 
   <svg id="clouds" xmlns="http://www.w3.org/2000/svg" width="2611.084" height="485.677" viewBox="0 0 2611.084 485.677">
