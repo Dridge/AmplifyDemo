@@ -1,6 +1,8 @@
-# AmplifyApp
+# AmplifyApp - My Restaurants
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.6.
+
+I'll use it as a chance to practice web development.
 
 ## Development server
 
